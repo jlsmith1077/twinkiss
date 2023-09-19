@@ -1,0 +1,21 @@
+<div id="scrollToTop" style="margin: 0em; padding: 0em; border: 0em;"></div>
+<app-order-list class="orderlist"></app-order-list>
+<mat-card>
+    <mat-card-title>Menu</mat-card-title>
+    <app-menu-list *ngFor="let menuEl of menuItem" [index]="i" [menuList]="menuEl">
+    </app-menu-list>
+    <app-food-toppings class="backdrop" *ngIf="openCondiments || openToppings"></app-food-toppings>
+    <app-shake-malts style="margin-left: 1em;"></app-shake-malts>
+    <app-soda-list style="margin-left: 1em;"></app-soda-list>
+    <app-icecream-list style="margin-left: 1em;"></app-icecream-list>
+    <app-gelati-list style="margin-left: 1em;"></app-gelati-list>
+    <app-sundae-list style="margin-left: 1em;"></app-sundae-list>
+    <app-artic-swirl-list style="margin-left: 1em;"></app-artic-swirl-list>
+    <app-sherbert-list style="margin-left: 1em;"></app-sherbert-list>
+    <app-yogurt-list style="margin-left: 1em;"></app-yogurt-list>
+    <app-slushies-list style="margin-left: 1em;"></app-slushies-list>
+</mat-card>
+<button style="text-align: center; font-size: xx-large;" mat-raised-button (click)="scrollToTop()">
+    back to top
+</button>
+<div style="height: 10em;"></div>

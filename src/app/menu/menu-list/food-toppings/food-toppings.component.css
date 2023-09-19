@@ -1,0 +1,165 @@
+mat-card{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+mat-check-box {
+    margin-left: 1em;
+    margin-right: 2em;
+    width: fit-content;
+}
+mat-title {
+  margin: 1em;
+  margin-bottom: 2em;
+}
+mat-subtitle {
+  margin: 1em;
+}
+mat-radio-button {
+    font-style: oblique;
+    margin-right: .1em;
+    margin-left: .2em;
+    width: fit-content;
+}
+mat-card-actions {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+.condiment {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-left: 1em;
+    width: fit-content;
+    text-align: center;
+}
+.form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-bottom: 2em;
+    width: fit-content;
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+}
+
+#additionalcomment {
+  text-align: center;
+  line-height: 3em;
+  margin-bottom: .5em;
+}
+@media screen and (orientation: portrait) {
+    button{
+        color: red;
+        font-size: 30pt;
+        width: fit-content;
+        padding:.5em;
+        border-radius: 15%;
+      }
+    }
+
+@media screen and (orientation: portrait) {
+    mat-card{
+        font-size: 30pt;
+        border-bottom-style: solid;
+        border-width: .1em;
+        padding: 1em;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-card-content{
+        font-size: 30pt;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-card-content p{
+        font-size: 30pt;
+        text-align: center;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-card-title {
+        text-align: center;
+        line-height: 1em;
+        font-size: 30pt;
+        padding: .3em;
+        width: 100%;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-card-subtitle {
+        flex-wrap: wrap;
+        font-size: 20pt;
+        margin-bottom: 1em;
+        line-height: 1em;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-checkbox, mat-checkbox ::target-text {
+      font-size: 20pt;
+        margin-bottom: .2em;
+        background-color: white;
+        
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-radio-button, mat-radio-button ::target-text {
+        font-size: 20pt;
+        font-style: italic;
+        font-weight: 400;
+      }
+    }
+@media screen and (orientation: portrait) {
+    mat-icon ::target-text {
+        font-size: 50pt;
+        text-align: center;
+      }
+    }
+@media screen and (orientation: portrait) {
+    .condiment {
+      font-size: 20pt;
+      width: fit-content;
+        }
+    }
+@media screen and (orientation: portrait) {
+    #additionalcomment {
+      line-height: 1em;
+      font-size: 20pt;
+      text-align: center;
+      width: fit-content;
+        }
+    }
+
+@media screen and (orientation: portrait) {
+    section {
+      font-size: 20pt;
+      }
+    }
+@media screen and (orientation: portrait) {
+    .checkout {
+        font-size: 20pt;
+        font-style: oblique;
+        font-weight: 600;
+      }
+    }
+@media screen and (orientation: portrait) {
+    .order {
+        font-size: 20pt;
+        font-style: oblique;
+        font-weight: 600;
+        margin-bottom: 2em;
+      }
+    }
+@media screen and (orientation: portrait) {
+    .handDipped {
+        font-size: 20pt;
+      }
+    }

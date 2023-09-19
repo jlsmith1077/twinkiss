@@ -1,0 +1,34 @@
+<mat-accordion>
+    <mat-expansion-panel #panel2 >
+        <mat-expansion-panel-header>
+            Milk Shakes & Malts
+            <span></span>
+            <img mat-card-img src="{{milkshakesImage}}">
+        </mat-expansion-panel-header>    
+        <mat-card>
+                <mat-card-content>
+                    <section  *ngFor="let shakesizeItemsEl of shakesizeItems" [index]="i" [shakeList]="shakesizeItemsEl" style="display: flex; flex-flow: row; width: 100%; justify-content: flex-start; align-items: center;">
+                        <p class="name">
+                            {{shakesizeItemsEl.name}}
+                        </p>
+                        <span>
+                    
+                        </span>
+                        <p class="price">
+                            <mat-radio-group>
+                                <mat-radio-button *ngFor="let shakesizeItemsSizeEl of shakesizeItemsEl.size" (change)="sizeChosen($event)" [value]="shakesizeItemsSizeEl" style="margin-left: .5em;">
+                                    {{shakesizeItemsSizeEl.name}}
+                                    {{shakesizeItemsSizeEl.price | currency}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                        <button mat-button color="primary" (click)="addToppings(shakesizeItemsEl.name)">
+                            <mat-icon>
+                                add_shopping_cart
+                            </mat-icon>
+                        </button>
+                    </section>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+    </mat-accordion>

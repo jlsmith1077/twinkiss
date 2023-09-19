@@ -1,0 +1,31 @@
+<mat-accordion multi="true">
+    <mat-expansion-panel #panel1>
+        <mat-expansion-panel-header>
+            {{menuList.name }} 
+            <span></span>
+            <img mat-card-img src="{{menuList.image}}">
+        </mat-expansion-panel-header>
+        <mat-card>
+            <mat-card-content>
+                <section *ngFor="let menuListEl of menuList.foods" [index]="i" style="display: flex; flex-flow: row; width: 100%; justify-content: center; align-items: center;" >
+                    <p class="name">
+                        {{menuListEl.name }}
+                    </p> 
+                    <p class="description">                
+                        {{menuListEl.description }}        
+                    </p>
+        
+                    <p class="price">
+                        {{menuListEl.price | currency }}
+                    </p> 
+                    <button mat-button color="primary" (click)="addCondiments(menuListEl.name, menuListEl.price, menuListEl.description, menuList.name)">
+                        <mat-icon>
+                            add_shopping_cart
+                        </mat-icon>
+                    </button> 
+                </section>
+                
+            </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>

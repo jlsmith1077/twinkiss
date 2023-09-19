@@ -1,0 +1,135 @@
+mat-card {
+    border-width: 0em;
+    border-bottom: 0em;
+  }
+  
+  mat-expansion-panel-header {
+    background-color: beige;
+    font-size: xx-large;
+    line-height: 2em;
+    padding: 1em;
+  }
+  mat-expansion-panel {
+    font-size: xx-large;
+    height: fit-content;
+    padding: 1em;
+  }
+  mat-radio-button {
+      margin-bottom: 1em;
+  }
+  span {
+      flex: 1 1 auto;
+  }
+  img{
+    margin-right: 4em;
+    width: 120px;
+    height: 80px;
+  }
+  .backdrop {
+      flex: 1;
+      position: fixed;
+      top: 10%;
+      left: 30%;
+      width: 50vw;
+      height: fit-content;
+      background: rgba(240, 241, 243, 0.75);
+      font-weight: 700;
+      z-index: 50;
+      color: black;
+      text-align: center;
+      padding: 1em;
+      justify-content: center;
+  }
+  section {
+      background-color: beige;
+      margin-bottom: 2em;
+  }
+  .name { 
+      background-color:beige;
+      width: 30%;
+      font-weight: 575;
+      display: flex;
+      flex-flow: column;
+      padding: .5em;
+      padding-left: 1em;
+      padding-top: 1em;
+      align-items: flex-start;
+      justify-content: center;
+  }
+  
+  .price {
+      background-color:beige;
+      color: green;
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: .5em;
+      padding-top: 1em;
+  }
+  
+  /* portrait mode */
+  
+  @media screen and (orientation: portrait)  {
+      mat-icon {
+      font-size: 50pt;
+      padding: .1em;
+      }
+    }
+  @media screen and (orientation: portrait)  {
+    mat-radio-button {
+      margin-bottom: 1em;
+      }
+    }
+  @media screen and (orientation: portrait)  {
+      .maticon {
+      font-size: 70pt;
+      padding: .1em;
+      }
+    }
+  @media screen and (orientation: portrait)  {
+      mat-card-title {
+      font-size: 40pt;
+      }
+    }
+    @media screen and (orientation: portrait)  {
+      mat-expansion-panel-header{
+        font-size: 40pt;
+        display: flex;
+        flex: 1;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: center;
+        height: 5.5em;
+        margin: 0em;
+        border: 0em;
+        }
+      }
+    @media screen and (orientation: portrait)  {
+      img {
+        height: 5em;
+        width: 4em;
+        margin: 0em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border: 0em;
+        }
+      }
+  @media screen and (orientation: portrait)  {
+      section {
+          background-color:beige;
+          margin-bottom: 1em;
+          padding-right: .2em;
+      }
+    }
+  @media screen and (orientation: portrait)  {
+      .name {
+      font-size: 28pt;
+      line-height: 1em;
+      }
+    }
+  @media screen and (orientation: portrait)  {
+      .price {
+      font-size: 25pt;
+      }
+    }

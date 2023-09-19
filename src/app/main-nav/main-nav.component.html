@@ -1,0 +1,86 @@
+
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+  <h1>Twin Kiss</h1>
+  <span></span>
+  <h3>856-881-8511</h3>
+  <p>25 Delsea Dr Clayton, NJ</p>
+  <span></span>
+  <button *ngIf="orderList.length > 0" mat-raised-button color="primary" (click)="openShowOrderList()" matBadge="{{orderList.length}}" matBadgePosition="above" matBadgeSize="large">
+    <mat-icon class="mat-icon">
+      shopping_cart
+    </mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <mat-nav-list>
+      <a
+      class="sidenav"
+      mat-list-item [routerLink]="nav"
+      *ngFor="let nav of fillerNav"
+      routerLinkActive="color: white"
+      (click)="loading()"
+      >
+      {{nav}}
+      </a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+  <ng-content *ngIf="!isLoading"></ng-content>
+</mat-sidenav-container>
+
+<!-- <div
+  class="container"
+>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon class="mat-icon">menu</mat-icon>
+    </button>
+    <h1>Twin Kiss</h1>
+    <span></span>
+    <h3>856-881-8511</h3>
+    <p>25 Delsea Dr Clayton, NJ</p>
+    <span></span>
+    <button *ngIf="orderList.length > 0" mat-raised-button color="primary" (click)="openShowOrderList()" matBadge="{{orderList.length}}" matBadgePosition="above" matBadgeSize="large">
+      <mat-icon class="mat-icon">
+          shopping_cart
+      </mat-icon>
+  </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'side' : 'over'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <a
+            class="sidenav"
+            mat-list-item [routerLink]="nav"
+            *ngFor="let nav of fillerNav"
+            routerLinkActive="color: white"
+          >
+            {{nav}}
+        </a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div> -->

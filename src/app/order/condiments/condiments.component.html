@@ -1,0 +1,127 @@
+<div   class="example-section" >
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="ketchupChecked($event)">Ketchup</mat-checkbox>
+    </section>
+    <mat-radio-group
+    [(ngModel)]="checkKetchup"         
+    >
+  <mat-radio-button (change)="updateKetchup($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt"  [disabled]="checkKetchup === false">
+    {{condimentAmtEl}}
+  </mat-radio-button>
+</mat-radio-group>
+</div>
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="mustardChecked($event)">Mustard</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkMustard">
+    <mat-radio-button (change)="updateMustard($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkMustard === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="mayonaiseChecked($event)">Mayonaise</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkMayonaise">
+    <mat-radio-button (change)="updateMayonaise($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkMayonaise === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="relishChecked($event)">Relish</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkRelish">
+    <mat-radio-button (change)="updateRelish($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkRelish === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="lettuceChecked($event)">Lettuce</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkLettuce">
+    <mat-radio-button (change)="updateLettuce($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkLettuce === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="tomatoChecked($event)">Tomato</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkTomato">
+    <mat-radio-button (change)="updateTomato($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkTomato === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="onionsChecked($event)">Onions</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkOnions">
+    <mat-radio-button (change)="updateOnions($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkOnions === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="saltChecked($event)">Salt</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkSalt">
+    <mat-radio-button (change)="updateSalt($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkSalt === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="pepperChecked($event)">Pepper</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkPepper">
+    <mat-radio-button (change)="updatePepper($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkPepper === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+<div class="condiment">
+    <section>
+        <mat-checkbox (change)="cheeseChecked($event)">Cheese</mat-checkbox>
+    </section>
+        <mat-radio-group
+    [(ngModel)]="checkCheese">
+    <mat-radio-button (change)="updateCheese($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" [disabled]="checkCheese === false">
+        {{condimentAmtEl}}
+    </mat-radio-button>
+    </mat-radio-group>    
+</div>
+
+</div>
+
+<input type="text" style="font-size: medium; text-align: center; margin-bottom: 1em;" (input)="addComments($event)" placeholder="additional comments">
+<mat-card-actions>
+    <button mat-raised-button color="primary" (click)="addToOrder()">Add to Order</button>     
+</mat-card-actions>

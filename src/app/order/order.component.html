@@ -1,0 +1,381 @@
+<mat-card >
+    <mat-card-title>
+        Choose from Menu then add to your order
+    </mat-card-title>
+    <mat-card-content id="scrollToTop">
+        <div>
+            <img src="../../assets/images/menu.jpg">
+        </div>
+        <button mat-raised-button color="primary" style="margin-bottom: 1em;" [matMenuTriggerFor]="matmenu"(click)="menuClick()" >Menu</button>
+        <mat-menu #matmenu="matMenu">
+            <mat-card-actions>
+                <button class="matmenu" mat-menu-item [matMenuTriggerFor]="menu2" *ngFor="let menuEl of menu"  (mouseover)="foodChoice(menuEl)" (click)="foodChoice(menuEl)">
+                    {{menuEl}}
+                </button>
+            </mat-card-actions>
+        </mat-menu>
+        <mat-menu #menu2="matMenu" >
+            <button class="matmenu" mat-menu-item *ngFor="let foodChosenEl of foodChosen" (click)="selectedFood(foodChosenEl)">
+		      {{foodChosenEl}}
+	        </button>
+    </mat-menu> 
+</mat-card-content>
+</mat-card>
+<mat-divider></mat-divider>
+<!-- Toppings HTML--------------------------------------------------------------------------------------------------------------- -->
+<mat-card *ngIf="order === true && topping === true" style="display: flex; flex-flow:column wrap; align-content: center; border-bottom-style: solid; border-width: .1em; background-color: rgba(255, 255, 255, 0.452);" >
+    <mat-card-title >{{foodselected}}</mat-card-title>
+    <!--SHAKES HANDIPPED OPTION----------------------------------->
+    <section style="margin-bottom: .5em; margin-left: .5em; text-align: center; color: inherit; max-width: 100%;" *ngIf="shakeSize || iceCreamSize || sundaeSize">
+        <mat-checkbox (change)="handdippedShake($event)">
+            Hand dipped flavors $.50 cents extra
+        </mat-checkbox>
+    </section>
+<!--End Shake Handipped ---->
+    <mat-card-subtitle style="text-align: center; margin: 0em; margin-bottom: 1em; color: red;" > Choose your size</mat-card-subtitle>
+    <mat-radio-group style="text-align: center; margin-bottom: .5em;" *ngIf="iceCreamSize === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeIcecreamEl of sizeIcecream" [value]="sizeIcecreamEl">
+            <b > {{sizeIcecreamEl.name}}</b>
+         {{sizeIcecreamEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <mat-radio-group style="text-align: center;" *ngIf="sundaeSize === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeSundaesEl of sizeSundaes" [value]="sizeSundaesEl">
+          {{sizeSundaesEl.name}}
+          {{sizeSundaesEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <mat-radio-group style="text-align: center;" *ngIf="shakeSize === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeShakeEl of sizeShake" [value]="sizeShakeEl">
+          {{sizeShakeEl.name}}
+          {{sizeShakeEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+    <mat-radio-group style="text-align: center;" *ngIf="slushieSize === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeSlushiesEl of sizeSlushies" [value]="sizeSlushiesEl">
+          {{sizeSlushiesEl.name}}
+          {{sizeSlushiesEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <mat-radio-group style="text-align: center;" *ngIf="gelatiSize === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeGelatiEl of sizeGelati" [value]="sizeGelatiEl">
+          {{sizeGelatiEl.name}}
+          {{sizeGelatiEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <mat-radio-group style="text-align: center;" *ngIf="waterIceSice === true">
+        <mat-radio-button style="margin-right: 1em;" (change)="sizeChecked($event)" *ngFor="let sizeWatericeEl of sizeWaterice" [value]="sizeWatericeEl">
+          {{sizeWatericeEl.name}}
+          {{sizeWatericeEl.price | currency}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <form [formGroup]="toppingsForm" (ngSubmit)="add_to_order(toppingsForm)" class="example-section">
+    <mat-card-content style="display: flex; flex-flow: row wrap; align-content: center; margin: 1em;">   
+        <h3>Each marked topping is additional monies</h3>
+    <div class="topping">
+
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="rainbowJimmies" (change)="rainbowJimmiesChecked($event)">
+                Rainbow Jimmies $.50
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="chocolateJimmies" (change)="chocolateJimmiesChecked($event)">
+                Chocolate Jimmies $.50
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="crunchCoat" (change)="crunchCoatChecked($event)">
+                Crunch Coat $.75
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="wetWalnuts" (change)="wetWalnutsChecked($event)">
+                Wet Walnuts $.50
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="mm" (change)="mmChecked($event)">
+                M&M's $.75
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="chocolateDipTop" (change)="chocolateDipTopChecked($event)">
+                Chocolate Dip Top $.65
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="peanutButterDipTop" (change)="peanutButterDipTopChecked($event)">
+                Peanut Butter Dip Top $.65
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox formControlName="peanutsCandy" (change)="peanutsCandyChecked($event)">
+                Peanuts Candy $.75
+            </mat-checkbox>
+        </section>
+    </div>
+</mat-card-content>
+</form>
+<mat-card-actions class="matcardaction">
+    <input id="additionalcomment" type="text" (input)="additionalComments($event)" placeholder="additional comments">
+</mat-card-actions>
+<mat-card-actions class="matcardaction">
+    <button (click)="add_to_order()" mat-raised-button color="primary">Add to Order</button>     
+</mat-card-actions>
+</mat-card>
+
+<!-- Toppings End----------------------------------------------------------------------------------------------------------------- -->
+<!--  Sodas ------------------------------------------------------------------------------------------------------------------------->
+<mat-card *ngIf="order === true && sodaHtml" style="display: flex; flex-flow:column wrap; align-content: center; border-bottom-style: solid; border-width: .1em; background-color: rgba(255, 255, 255, 0.452);" >
+    <mat-card-title >{{foodselected}}</mat-card-title>
+    <mat-card-subtitle style="text-align: center; margin: 0em; margin-bottom: .5em; color: red;" >Choose your size</mat-card-subtitle>
+    <mat-radio-group style="text-align: center;" *ngIf="sodasSize === true">
+        <mat-radio-button style="margin-right: 1em; margin-bottom: .5em;" (change)="sizeChecked($event)" *ngFor="let sizeSodasEl of sizeSodas" [value]="sizeSodasEl">
+          {{sizeSodasEl.name}}
+        <b > {{sizeSodasEl.price | currency}}</b>
+        </mat-radio-button>
+      </mat-radio-group>
+    <form [formGroup]="toppingsForm" (ngSubmit)="add_to_order(toppingsForm)" class="example-section">
+    <mat-card-content style="display: flex; flex-flow: row wrap; align-content: center; margin: 1em;">   
+        <h3 style="margin-right: .5em;text-align: center;">Added flavor is addiotional $.10 cents</h3>
+    <div class="topping">
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox (change)="sodaFlavorChocolate($event)" value="Chocolate">
+                Chocolate
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox (change)="sodaFlavorVanilla($event)" value="Vanilla">
+                Vanilla
+            </mat-checkbox>
+        </section>
+        <section style="margin-bottom: 1.5em;">
+            <mat-checkbox (change)="sodaFlavorCherry($event)" value="Cherry">
+                Cherry
+            </mat-checkbox>
+        </section>
+        
+    </div>
+</mat-card-content>
+</form>
+<mat-card-actions class="matcardaction" >
+    <button (click)="add_to_order()" mat-raised-button color="primary">Add to Order</button>     
+</mat-card-actions>
+</mat-card>
+
+<!-- Sodas End ---------------------------------------------------------------------------------------------------------------------->
+<!-- Condiments HTML ---------------------------------------------------------------------------------------------------------------->
+
+<mat-card *ngIf="order === true && !topping && condimentDisplay" style="display: flex; flex-flow:column wrap; align-content: center; border-bottom-style: solid; border-width: .1em; background-color: rgba(255, 255, 255, 0.452);" >
+    <mat-card-title >{{foodselected}}</mat-card-title>
+    <mat-radio-group  *ngIf="iceCreamSize === true">
+        <mat-radio-button (change)="updateKetchup($event)" *ngFor="let sizeIcecreamEl of sizeIcecream">
+          {{sizeIcecreamEl}}
+        </mat-radio-button>
+      </mat-radio-group>
+    <form  [formGroup]="condimentsForm" (ngSubmit)="add_to_order(condimentsForm)" class="example-section" >
+    <mat-card-content style="display: flex; flex-flow: row wrap; align-content: center; margin: 1em;">
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Ketchup" (change)="ketchupChecked($event)">Ketchup</mat-checkbox>
+        </section>
+        <mat-radio-group  *ngIf="checkKetchup === true">
+      <mat-radio-button (change)="updateKetchup($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+        {{condimentAmtEl}}
+      </mat-radio-button>
+    </mat-radio-group>
+    </div>
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Mustard" (change)="mustardChecked($event)">Mustard</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkMustard === true">
+        <mat-radio-button (change)="updateMustard($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Mayonaise" (change)="mayonaiseChecked($event)">Mayonaise</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkMayonaise === true">
+        <mat-radio-button  (change)="updateMayonaise($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Relish" (change)="relishChecked($event)">Relish</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkRelish === true">
+        <mat-radio-button (change)="updateRelish($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Lettuce" (change)="lettuceChecked($event)">Lettuce</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkLettuce === true">
+        <mat-radio-button (change)="updateLettuce($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Tomato" (change)="tomatoChecked($event)">Tomato</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkTomato === true">
+        <mat-radio-button (change)="updateTomato($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Onions" (change)="onionsChecked($event)">Onions</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkOnions === true">
+        <mat-radio-button (change)="updateOnions($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Salt" (change)="saltChecked($event)">Salt</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkSalt === true">
+        <mat-radio-button (change)="updateSalt($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" >
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Pepper" (change)="pepperChecked($event)">Pepper</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkPepper === true">
+        <mat-radio-button (change)="updatePepper($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" >
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Cheese" (change)="cheeseChecked($event)">Cheese</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkCheese === true">
+        <mat-radio-button (change)="updateCheese($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt" >
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Pickles" (change)="picklesChecked($event)">Pickles</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkPickles === true">
+        <mat-radio-button (change)="updatePickles($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Bacon" (change)="baconChecked($event)">Bacon</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkBacon === true">
+        <mat-radio-button (change)="updateBacon($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Friedonions" (change)="friedOnionsChecked($event)">Fried Onions</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkFriedOnions === true">
+        <mat-radio-button (change)="updateFriedOnions($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+    <div class="condiment">
+        <section>
+            <mat-checkbox formControlName="Sauce" (change)="sauceChecked($event)">Sauce</mat-checkbox>
+        </section>
+            <mat-radio-group *ngIf="checkSauce === true">
+        <mat-radio-button (change)="updateSauce($event)" [value]="condimentAmtEl" *ngFor="let condimentAmtEl of condimentAmt">
+            {{condimentAmtEl}}
+        </mat-radio-button>
+        </mat-radio-group>    
+    </div>
+</mat-card-content>
+</form>
+<mat-card-actions style="margin-right: 1em;" class="matcardaction">
+    <input id="additionalcomment" type="text" (input)="additionalComments($event)" placeholder="additional comments">
+</mat-card-actions>
+<mat-card-actions class="matcardaction">
+    <button (click)="add_to_order()" mat-raised-button color="primary">Add to Order</button>     
+</mat-card-actions>
+</mat-card>
+
+<!-- End Condiments HTML ---------------------------------------------------------------------------------------------------------------------->
+
+<mat-card *ngIf="order === true && !topping && !condimentDisplay && !sodaHtml !shakeSize"  style="margin-bottom: 1em; border-bottom-style: solid; border-width: .1em; width: 50%; align-content: center; margin-left: 25%; margin-right: 25%; background-color: whitesmoke;">
+    <mat-card-title  >{{foodselected}}</mat-card-title>
+     <mat-card-content>
+        <mat-radio-group  *ngIf="iceCreamSize === true">
+            <mat-radio-button (change)="updateKetchup($event)" *ngFor="let sizeIcecreamEl of sizeIcecream">
+              {{sizeIcecreamEl}}
+            </mat-radio-button>
+          </mat-radio-group>
+          <mat-card-actions style="margin-right: 2em;">
+            <input id="additionalcomment" type="text" (input)="additionalComments($event)" placeholder="additional comments">
+        </mat-card-actions>
+        <mat-card-actions >
+            <button mat-raised-button color="primary" (click)="add_to_order()">Add to Order</button>
+        </mat-card-actions>
+     </mat-card-content>
+</mat-card>
+<mat-card>
+        <mat-card-title style="color: green;">Your order</mat-card-title>
+            <div class="order" *ngFor="let orderlistEl of orderlist; let i = index" style="color: green; background-color: beige; border-color: green;  border-width: 1em; padding-left: .5em; padding-top: .5em; padding-right: .5em; height: fit-content; display: flex; flex-flow: column wrap; align-items: center; justify-content: center;" >
+                <P style=" line-height: 1em;">{{orderlistEl.name }}: {{orderlistEl.price | currency}}</P>
+                <article *ngIf="orderlistEl.condiments.length > 0" style="overflow: hidden; height: fit-content;  line-height: 1em;;"> 
+                    with: {{orderlistEl.condiments}}
+                </article>
+                <article style="font-weight: 500; margin-bottom: 1em;">Additional Comments: 
+                    <section style="font-weight: 400; font-style: italic; margin-bottom: .2em; background-color: beige;">
+                        {{orderlistEl.comments}}
+                    </section>
+                </article>
+                <span></span>  
+                <mat-card-actions >
+                    <button *ngIf="orderlist.length > 0" mat-raised-button color="accent" (click)="editSelectedFood(i, orderlistEl.name, orderlistEl.price)" >Edit</button>
+                    <button *ngIf="orderlist.length > 0" mat-raised-button color="warn" (click)="takeOffOrder(i, orderlistEl)"><mat-icon>close</mat-icon></button>
+                </mat-card-actions>
+            </div>
+        <p class="checkout">                
+            Total Amount: {{totalPrice | currency}} + tax
+        </p>
+    <mat-card-actions>
+        <button *ngIf="add === 'true'" mat-raised-button style="background-color: green; color: white; font-weight: 500; margin: 2em; text-align: center;">Check Out</button>
+    </mat-card-actions>
+</mat-card>
+

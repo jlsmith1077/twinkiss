@@ -1,0 +1,99 @@
+mat-sidenav-content {
+  width: 100%;  
+  overflow: hidden;
+}
+mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+}
+mat-toolbar{
+  position: sticky;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+mat-toolbar a {
+  display: inline-block;
+  margin: 0 1em;
+  text-decoration: none;
+}
+app-loading-spinner {
+  text-align: center;
+  margin-left: 40%;
+}
+span{
+  flex: 1 1 auto;
+}
+button {
+  font-size: xx-large;
+}
+a {
+  font-size: xx-large;
+  margin: 1em;
+}
+mat-icon {
+  font-size: xx-large;
+}
+
+h1 {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+h3 {
+  margin-left: 1em;
+  margin-right: 1em;
+  color: red;
+}
+p {
+  margin-top: .3em;
+}
+@media screen and (orientation: portrait) {
+  h3 {
+      color: red;
+      margin: .1em;
+      font-size: xx-large;
+    }
+  }
+@media screen and (orientation: portrait) {
+  h1 {
+      margin: .1em;
+      font-size: xx-large;
+    }
+  }
+@media screen and (orientation: portrait) {
+  mat-sidenav-container, mat-sidenav-content, .container {
+      width: 100%;
+    }
+  }
+@media screen and (orientation: portrait) {
+  mat-icon {
+      font-size: 30pt;
+      margin-right: .3em;
+    }
+  }
+@media screen and (orientation: portrait) {
+  mat-icon {
+      font-size: 30pt;
+      margin-right: .3em;
+    }
+  }
+@media screen and (orientation: portrait) {
+  button {
+      font-size: xx-large;
+    }
+  }
+@media screen and (orientation: portrait) {
+ .sidenav{
+    font-size: 30pt;
+    margin-bottom: 2em;
+    margin-left: 0em;
+    margin-right: 0em;
+    width: 100%;
+    }
+  }
+@media screen and (orientation: portrait) {
+  mat-toolbar {
+    font-size: xx-large;
+    height: 10vh;
+    }
+  }

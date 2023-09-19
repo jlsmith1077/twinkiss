@@ -1,0 +1,34 @@
+<mat-accordion>
+    <mat-expansion-panel #panel2 >
+        <mat-expansion-panel-header>
+            Slushie
+            <span></span>
+            <img mat-card-img src="{{slushieImage}}">
+        </mat-expansion-panel-header>    
+        <mat-card>
+                <mat-card-content>
+                    <section  *ngFor="let slushiesSizeItemEl of slushiesSizeItem" [index]="i" style="display: flex; flex-flow: row; width: 100%; justify-content: flex-start; align-items: center;">
+                        <p class="name">
+                            {{slushiesSizeItemEl.name}}
+                        </p>
+                        <span>
+                    
+                        </span>
+                        <p class="price">
+                            <mat-radio-group>
+                                <mat-radio-button *ngFor="let slushiesSizeChoseEl of slushiesSizeItemEl.size" (change)="sizeChosen($event)" [value]="slushiesSizeChoseEl" style="margin-left: .5em;">
+                                    {{slushiesSizeChoseEl.name}}
+                                    {{slushiesSizeChoseEl.price | currency}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                        <button mat-button color="primary" (click)="addToppings(slushiesSizeItemEl.name)">
+                            <mat-icon>
+                                add_shopping_cart
+                            </mat-icon>
+                        </button>
+                    </section>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+    </mat-accordion>

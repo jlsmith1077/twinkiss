@@ -1,0 +1,25 @@
+<mat-card *ngIf="totalPrice > 0">
+    <mat-card-title style="color: green;">Your order</mat-card-title>
+        <div class="order" *ngFor="let orderlistEl of orderList; let i = index">
+            <P style=" line-height: 1em;">{{orderlistEl.name }}: {{orderlistEl.price | currency}}</P>
+            <article style="margin-bottom: 1em; word-break: break-all;" *ngIf="orderlistEl.condiments.length > 0"> 
+                with: {{orderlistEl.condiments}}
+            </article>
+            <article>
+                    Additional Comments: {{orderlistEl.comments}}
+            </article>
+                     
+            <mat-card-actions style="float: right;">
+                <button class="button" mat-button color="warn" (click)="removeItem(i, orderlistEl.price)">
+                    <mat-icon>
+                        close
+                    </mat-icon>
+                </button>
+            </mat-card-actions>
+        </div>
+    <mat-divider></mat-divider>
+    <section>
+        <h2 class="checkout">Total Price: {{totalPrice | currency}} + tax</h2>
+        <button color="warn" mat-button (click)="clearOrder()">Clear</button>
+    </section>
+</mat-card>
